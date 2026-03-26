@@ -19,8 +19,14 @@ import {
   X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { PROFILE_DATA } from './config/profile';
+
+// Static asset paths from public directory
+const cvFile = "./MayThaeKhaingKyawCV.pdf";
+const profileImgPath = "./profile.jpg";
 
 const fadeIn = {
+
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
@@ -28,64 +34,10 @@ const fadeIn = {
 };
 
 export default function App() {
-  const skills = [
-    {
-      category: "System Administration",
-      icon: <Server className="w-5 h-5 text-blue-500" />,
-      items: [
-        "Microsoft System Administration (Intermediate)",
-        "Linux System Administration (Intermediate)",
-        "Microsoft Server Administration (AD & IIS)"
-      ]
-    },
-    {
-      category: "Networking & Infrastructure",
-      icon: <Network className="w-5 h-5 text-blue-500" />,
-      items: [
-        "Networking Essentials",
-        "DHCP & DNS Configuration",
-        "RAID Configuration"
-      ]
-    }
-  ];
+  const [profileImage, setProfileImage] = useState<string>(profileImgPath);
 
-  const education = [
-    {
-      course: "NCC Level-5 Diploma in Cyber Security (UK)",
-      school: "M.S.T College",
-      status: "Present"
-    },
-    {
-      course: "NCC Level-4 Diploma in Computing (UK)",
-      school: "M.S.T College",
-      status: "Completed"
-    },
-    {
-      course: "NCC Level-3 Diploma in Computing (UK)",
-      school: "Y-Max College",
-      status: "Completed"
-    },
-    {
-      course: "Middle School Education (TTC)",
-      school: "Yankin Education Degree College",
-      status: "Completed"
-    }
-  ];
 
-  const languages = [
-    {
-      course: "English Proficiency (Level 18)",
-      school: "Wall Street English Myanmar",
-      status: "Present"
-    },
-    {
-      course: "Chinese Proficiency (HSK-4)",
-      school: "Myanmar International Education Center",
-      status: "Completed"
-    }
-  ];
 
-  const [profileImage, setProfileImage] = useState<string>("/profile.jpg");
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const target = e.target as HTMLImageElement;
@@ -108,8 +60,9 @@ export default function App() {
       <nav className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-md z-50 border-b border-slate-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <a href="#" className="font-bold text-xl tracking-tighter text-white group">
-            MTKK<span className="text-blue-500">.</span>
+            {PROFILE_DATA.shortName}<span className="text-blue-500">.</span>
           </a>
+
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8 text-xs font-bold tracking-[0.1em] text-slate-400">
@@ -171,21 +124,23 @@ export default function App() {
           >
             <div className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-blue-900/20 text-blue-400 text-[10px] font-bold tracking-[0.1em] mb-8 border border-blue-800/50">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
-              Available for Internship
+              {PROFILE_DATA.status}
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
-              May Thae <br />
-              <span className="text-blue-500">Khaing Kyaw</span>
+              {PROFILE_DATA.name.split(' ').slice(0, 2).join(' ')} <br />
+              <span className="text-blue-500">{PROFILE_DATA.name.split(' ').slice(2).join(' ')}</span>
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-slate-400 mb-8 font-light tracking-tight max-w-lg mx-auto lg:mx-0 leading-relaxed">
               IT student seeking a <span className="text-slate-200 font-medium">System Engineer Internship</span> to gain practical experience in enterprise-grade infrastructure.
             </p>
+
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
               <a 
-                href="/MayThaeKhaingKyawCV.pdf" 
+                href={cvFile} 
                 download="MayThaeKhaingKyawCV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+
+
+
                 className="bg-white text-slate-950 px-6 sm:px-8 py-3.5 rounded-lg font-bold tracking-[0.05em] text-[10px] hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-900/10 active:scale-95"
               >
                 <Download className="w-4 h-4" />
@@ -207,8 +162,9 @@ export default function App() {
             <div className="w-full h-full rounded-[2.5rem] overflow-hidden border-[10px] sm:border-[12px] border-slate-900 shadow-xl bg-slate-900 relative group">
               <img 
                 src={profileImage} 
-                alt="May Thae Khaing Kyaw" 
+                alt={PROFILE_DATA.name} 
                 className="w-full h-full object-cover"
+
                 referrerPolicy="no-referrer"
                 onError={handleImageError}
               />
@@ -227,22 +183,24 @@ export default function App() {
                 <h2 className="text-[10px] font-bold text-blue-500 tracking-[0.1em] mb-4 uppercase">01. Profile</h2>
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight tracking-tight uppercase">Professional <br />Background</h3>
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1.5 bg-slate-900/50 backdrop-blur-md text-slate-300 rounded-lg text-[9px] font-bold tracking-[0.05em] border border-slate-800">Yangon, Myanmar</span>
+                  <span className="px-3 py-1.5 bg-slate-900/50 backdrop-blur-md text-slate-300 rounded-lg text-[9px] font-bold tracking-[0.05em] border border-slate-800">{PROFILE_DATA.location}</span>
                   <span className="px-3 py-1.5 bg-slate-900/50 backdrop-blur-md text-slate-300 rounded-lg text-[9px] font-bold tracking-[0.05em] border border-slate-800">IT Student</span>
                 </div>
+
               </motion.div>
             </div>
             <div className="lg:col-span-7">
               <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
                 <div className="space-y-6">
                   <p className="text-slate-400 leading-relaxed text-base sm:text-lg md:text-xl font-light tracking-tight">
-                    I’m <span className="text-white font-medium">May Thae Khaing Kyaw</span>, an IT student at M.S.T College, passionate about gaining hands-on experience through a <span className="text-blue-400 font-medium">System Engineer Internship Program</span>. I am eager to learn from senior IT professionals, improve my technical skills, and apply my academic knowledge in real-world production infrastructure.
+                    I’m <span className="text-white font-medium">{PROFILE_DATA.name}</span>, {PROFILE_DATA.about.description}
                   </p>
                   <div className="p-5 sm:p-6 bg-slate-900/30 border-l border-blue-600 rounded-r-xl">
                     <p className="text-slate-500 leading-relaxed text-sm sm:text-base md:text-lg italic font-light">
-                      "I enjoy challenges, teamwork, and stepping out of my comfort zone to grow in my career. I am motivated, adaptable, and willing to take risks and learn from experience to build a strong future in the system & networking field."
+                      "{PROFILE_DATA.about.quote}"
                     </p>
                   </div>
+
                 </div>
               </motion.div>
             </div>
@@ -260,7 +218,8 @@ export default function App() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
-            {skills.map((skill, index) => (
+            {PROFILE_DATA.skills.map((skill, index) => (
+
               <motion.div 
                 key={index}
                 className="bg-slate-900/40 backdrop-blur-md border border-slate-800/50 rounded-xl p-6 sm:p-8 group hover:border-blue-500/20 transition-all duration-500 relative overflow-hidden"
@@ -298,7 +257,8 @@ export default function App() {
                 <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight uppercase">Education</h3>
               </div>
               <div className="space-y-10">
-                {education.map((item, index) => (
+                {PROFILE_DATA.education.map((item, index) => (
+
                   <motion.div 
                     key={index}
                     className="relative pl-8 group"
@@ -339,7 +299,8 @@ export default function App() {
                 <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight uppercase">Language Proficiency</h3>
               </div>
               <div className="space-y-10">
-                {languages.map((item, index) => (
+                {PROFILE_DATA.languages.map((item, index) => (
+
                   <motion.div 
                     key={index}
                     className="relative pl-8 group"
@@ -401,10 +362,11 @@ export default function App() {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold text-slate-500 tracking-[0.05em] mb-1">Email</p>
-                  <a href="mailto:maythaekhaingkyaw27@gmail.com" className="text-base font-bold text-white hover:text-blue-400 transition-colors break-all">
-                    maythaekhaingkyaw27@gmail.com
+                  <a href={`mailto:${PROFILE_DATA.email}`} className="text-base font-bold text-white hover:text-blue-400 transition-colors break-all">
+                    {PROFILE_DATA.email}
                   </a>
                 </div>
+
               </div>
 
               <div className="flex items-start gap-4 p-6 rounded-xl bg-slate-900/40 border border-slate-800/50">
@@ -413,10 +375,11 @@ export default function App() {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold text-slate-500 tracking-[0.05em] mb-1">Phone</p>
-                  <a href="tel:+959788875477" className="text-base font-bold text-white hover:text-emerald-400 transition-colors">
-                    +95 978 887 5477
+                  <a href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`} className="text-base font-bold text-white hover:text-emerald-400 transition-colors">
+                    {PROFILE_DATA.phone}
                   </a>
                 </div>
+
               </div>
 
               <div className="flex items-start gap-4 p-6 rounded-xl bg-slate-900/40 border border-slate-800/50 sm:col-span-2 lg:col-span-1">
@@ -425,8 +388,9 @@ export default function App() {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold text-slate-500 tracking-[0.05em] mb-1">Location</p>
-                  <p className="text-base font-bold text-white">Yangon, Myanmar</p>
+                  <p className="text-base font-bold text-white">{PROFILE_DATA.location}</p>
                 </div>
+
               </div>
             </motion.div>
           </div>
@@ -438,21 +402,23 @@ export default function App() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10 mb-12">
             <div className="text-center lg:text-left">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 tracking-tight leading-none">May Thae Khaing Kyaw</h3>
-              <p className="text-slate-500 text-[9px] sm:text-[10px] font-bold tracking-[0.1em]">IT Student & Internship Candidate</p>
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 tracking-tight leading-none">{PROFILE_DATA.name}</h3>
+              <p className="text-slate-500 text-[9px] sm:text-[10px] font-bold tracking-[0.1em]">{PROFILE_DATA.role}</p>
             </div>
             <div className="flex gap-3 sm:gap-4">
-              {[
-                { icon: <ExternalLink className="w-4 h-4" />, href: "#", label: "Portfolio" }
-              ].map((social, i) => (
+              {PROFILE_DATA.socials.map((social, i) => (
+
                 <a 
                   key={i}
                   href={social.href} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500 hover:text-white hover:bg-blue-600 transition-all duration-500"
                   aria-label={social.label}
                 >
                   {social.icon}
                 </a>
+
               ))}
             </div>
           </div>
