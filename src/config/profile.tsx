@@ -11,11 +11,11 @@ import {
 export const PROFILE_DATA = {
   name: "May Thae Khaing Kyaw",
   shortName: "MTKK",
-  role: "System Engineer Internship candidate",
-  location: "Yangon, Myanmar",
+  role: "System Engineer Intern Candidate",
+  location: "No.32, 89th Street, Mingalar Taung Nyunt, Yangon.",
   status: "Available for Internship",
   email: "maythaekhaingkyaw27@gmail.com",
-  phone: "+95 978 887 5477",
+  phone: "+959788875477",
   
   about: {
     description: "I’m May Thae Khaing Kyaw, an IT student at M.S.T College, passionate about gaining hands-on experience through a System Engineer Internship Program. I am eager to learn from senior IT professionals, improve my technical skills, and apply my academic knowledge in real-world production infrastructure.",
@@ -27,54 +27,54 @@ export const PROFILE_DATA = {
       category: "System Administration",
       icon: <Server className="w-5 h-5 text-blue-500" />,
       items: [
-        "Microsoft System Administration (Intermediate)",
-        "Linux System Administration (Intermediate)",
-        "Microsoft Server Administration (AD & IIS)"
+        "Intermediate in Microsoft & Linux System Administration",
+        "MS SVR Administration",
+        "System Policy & Management"
       ]
     },
     {
       category: "Networking & Infrastructure",
       icon: <Network className="w-5 h-5 text-blue-500" />,
       items: [
-        "Networking Essentials",
-        "DHCP & DNS Configuration",
-        "RAID Configuration"
+        "Networking Essential & MS SVR Administration",
+        "DHCP, DNS, RAID, AD, IIS Configuration",
+        "Infrastructure Maintenance"
       ]
     }
   ],
 
   education: [
     {
-      course: "NCC Level-5 Diploma in Cyber Security (UK)",
-      school: "M.S.T College",
+      course: "NCC Level-5 Diploma in Cyber Security (UK) at M.S.T College. (Present)",
+      school: "",
       status: "Present"
     },
     {
-      course: "NCC Level-4 Diploma in Computing (UK)",
-      school: "M.S.T College",
+      course: "NCC Level-4 Diploma in Computing (UK) at M.S.T College.",
+      school: "",
       status: "Completed"
     },
     {
-      course: "NCC Level-3 Diploma in Computing (UK)",
-      school: "Y-Max College",
+      course: "NCC Level-3 Diploma in Computing (UK) at Y-Max College.",
+      school: "",
       status: "Completed"
     },
     {
-      course: "Middle School Education (TTC)",
-      school: "Yankin Education Degree College",
+      course: "Practicing Middle School Yankin Education Degree College (Yankin.TTC)",
+      school: "",
       status: "Completed"
     }
   ],
 
   languages: [
     {
-      course: "English Proficiency (Level 18)",
-      school: "Wall Street English Myanmar",
+      course: "Wall Street English Myanmar (Level-18) (Present)",
+      school: "",
       status: "Present"
     },
     {
-      course: "Chinese Proficiency (HSK-4)",
-      school: "Myanmar International Education Center",
+      course: "Myanmar International Education Center (HSK-4)",
+      school: "",
       status: "Completed"
     }
   ],
