@@ -22,7 +22,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PROFILE_DATA } from './config/profile';
 
 // Static asset paths from public directory
-const cvFile = "./MayThaeKhaingKyawCV.pdf";
+const cvFile = "/MayThaeKhaingKyawCV.pdf";
 const profileImgPath = "./profile.jpg";
 
 const fadeIn = {
